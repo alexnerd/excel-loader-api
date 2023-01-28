@@ -1,0 +1,41 @@
+app:
+  workers-number: 5
+  batch-size: 10000
+  retry-num: 5
+  integration:
+    json-size: 20
+
+server:
+  shutdown: graceful
+
+spring:
+  servlet:
+    multipart:
+      enabled: false
+      max-file-size: 10MB
+      max-request-size: 11MB
+  datasource:
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+  main:
+    banner-mode: off
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,prometheus
+  metrics:
+    distribution:
+      percentiles-histogram:
+        http.server.requests: true
+      minimum-expected-value:
+        http.server.requests: 50ms
+      maximum-expected-value:
+        http.server.requests: 5s
+      percentiles:
+        http.server.requests: 0.95
+      slo:
+        http.server.requests: 500ms

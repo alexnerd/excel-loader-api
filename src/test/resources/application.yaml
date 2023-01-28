@@ -1,0 +1,25 @@
+app:
+  workers-number: 5
+  batch-size: 10000
+  retry-num: 5
+  integration:
+    url: http://localhost:8191/service
+    json-size: 10
+
+server:
+  servlet:
+    context-path: /stuff-mapping
+
+spring:
+  http:
+    multipart:
+      enabled: false
+      max-file-size: 10MB
+      max-request-size: 11MB
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
