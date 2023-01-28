@@ -21,7 +21,7 @@ CREATE TABLE stuff (
     name varchar NOT NULL UNIQUE,
     description varchar,
     create_time TIMESTAMP NOT NULL DEFAULT now()
-)
+);
 
 CREATE UNIQUE INDEX stuff_name_idx ON stuff (name);
 CREATE INDEX stuff_description_idx ON stuff (description);
